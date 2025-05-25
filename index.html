@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freddy Candelo - Portfolio</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2d3436;
+            --secondary: #636e72;
+            --accent: #0984e3;
+            --accent-hover: #74b9ff;
+            --success: #00b894;
+            --background: #f5f6fa;
+            --card-bg: #ffffff;
+            --text-primary: #2d3436;
+            --text-secondary: #636e72;
+            --gradient-primary: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+            --gradient-card: linear-gradient(135deg, #ffffff 0%, #f5f6fa 100%);
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+        }
+
+        .container {
+            padding: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 4px solid transparent;
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .location {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .technologies-section {
+            margin: 4rem 0;
+            padding: 2rem 0;
+            background: var(--gradient-card);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .technologies-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .technologies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .tech-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        .tech-item i {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .tech-item:hover i {
+            transform: scale(1.2);
+            color: var(--accent-hover);
+        }
+
+        .tech-item span {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .tech-item img {
+            width: 2rem;
+            height: 2rem;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .tech-item:hover img {
+            transform: scale(1.2);
+        }
+
+        .tech-item.make-logo img {
+            width: 2.5rem;
+            height: 1.6rem;
+        }
+
+        .tech-item.n8n-logo img {
+            width: 1.8rem;
+            height: 1.8rem;
+        }
+
+        .tech-item.zapier-logo img {
+            width: 2.2rem;
+            height: 2.2rem;
+        }
+
+        .tech-item.cursor-logo img {
+            width: 1.8rem;
+            height: 1.8rem;
+        }
+
+        .tech-item.chatgpt-logo img {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .tech-item.fastapi-logo img {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .tech-item.mysql-logo img {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .tech-item.oracle-logo img {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Ajustar el delay de animación para cada elemento */
+        .tech-item:nth-child(1) { animation-delay: 0.1s; }
+        .tech-item:nth-child(2) { animation-delay: 0.2s; }
+        .tech-item:nth-child(3) { animation-delay: 0.3s; }
+        .tech-item:nth-child(4) { animation-delay: 0.4s; }
+        .tech-item:nth-child(5) { animation-delay: 0.5s; }
+        .tech-item:nth-child(6) { animation-delay: 0.6s; }
+        .tech-item:nth-child(7) { animation-delay: 0.7s; }
+        .tech-item:nth-child(8) { animation-delay: 0.8s; }
+        .tech-item:nth-child(9) { animation-delay: 0.9s; }
+        .tech-item:nth-child(10) { animation-delay: 1s; }
+        .tech-item:nth-child(11) { animation-delay: 1.1s; }
+        .tech-item:nth-child(12) { animation-delay: 1.2s; }
+
+        .services-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            animation: fadeInUp 0.5s ease-out;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--gradient-card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .price {
+            margin-top: 1rem;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .details-button {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            transition: var(--transition);
+            width: 100%;
+            font-weight: 500;
+        }
+
+        .details-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
+        }
+
+        .service-details {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .service-details.visible {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .service-details h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .service-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-details li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .service-details li:before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-top: 3rem;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .contact-button {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .contact-info.visible {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        .contact-info i {
+            width: 20px;
+            margin-right: 8px;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        .icon-blue { color: var(--accent); }
+        .icon-yellow { color: #fdcb6e; }
+        .icon-orange { color: #e17055; }
+        .icon-purple { color: #6c5ce7; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        .tech-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-category-title {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .tech-category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img 
+                src="https://media.licdn.com/dms/image/v2/D4E03AQEB09xXwK-j2g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1703118560467?e=1753315200&v=beta&t=S3MiVuT6czJXSVNXd7cenu9eeJvHOSwicITv2wgSUD4" 
+                alt="Freddy Candelo" 
+                class="profile-image"
+            >
+            <h1>Freddy Candelo</h1>
+            <p class="subtitle">Blockchain Master | Full Stack Developer | Scratch Tutor</p>
+            <p class="location">Cali, Valle del Cauca, Colombia</p>
+            <button class="contact-button" onclick="toggleContact()">Mostrar contacto</button>
+            <div class="contact-info" id="contactInfo">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:fredcanvel@gmail.com">fredcanvel@gmail.com</a></p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/573105003975" target="_blank">+57 310 500 3975</a></p>
+                <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/freddy-candelo/" target="_blank">linkedin.com/in/freddy-candelo</a></p>
+                <p><i class="fab fa-github"></i> <a href="https://github.com/fred-canvel" target="_blank">github.com/fred-canvel</a></p>
+            </div>
+        </header>
+
+        <section class="services-grid">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-code icon icon-blue"></i>
+                    <h2 class="card-title">Desarrollo Full Stack</h2>
+                </div>
+                <p>Aplicaciones web completas, integración de APIs, bases de datos, pruebas y documentación.</p>
+                <p class="price">Desde COP $80.000/hora</p>
+                <button class="details-button" onclick="toggleDetails('fullstack')">Ver detalles</button>
+                <div class="service-details" id="fullstack-details">
+                    <h3>Tecnologías y Servicios</h3>
+                    <ul>
+                        <li>Desarrollo Frontend con WordPress, Vue.js, HTML5, CSS3, JavaScript</li>
+                        <li>Backend con Node.js, Python y Java</li>
+                        <li>Bases de datos SQL y NoSQL</li>
+                        <li>APIs con FastAPI</li>
+                        <li>Testing y documentación técnica</li>
+                        <li>Despliegue y DevOps</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-bolt icon icon-yellow"></i>
+                    <h2 class="card-title">Automatización y RPA</h2>
+                </div>
+                <p>Automatización de procesos, scraping de datos y dashboards interactivos.</p>
+                <p class="price">Desde COP $70.000/hora</p>
+                <button class="details-button" onclick="toggleDetails('rpa')">Ver detalles</button>
+                <div class="service-details" id="rpa-details">
+                    <h3>Tecnologías y Servicios</h3>
+                    <ul>
+                        <li>Automatización con Python y Selenium</li>
+                        <li>Web Scraping y extracción de datos para obtencion de clientes potenciales</li>
+                        <li>Dashboards interactivos</li>
+                        <li>Visualización de datos con Looker Studio</li>
+                        <li>Automatización de procesos empresariales</li>
+                        <li>Integración de sistemas con Make, n8n, Zapier, Cursor, ChatGPT</li>
+                        <li>Desarrollo de chatbots</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fab fa-bitcoin icon icon-orange"></i>
+                    <h2 class="card-title">Blockchain y Cripto</h2>
+                </div>
+                <p>Consultoría en tecnología blockchain, adopción de activos digitales como metodos de pago y formación en gestion criptoactivos.</p>
+                <p class="price">Desde COP $200.000/hora</p>
+                <button class="details-button" onclick="toggleDetails('blockchain')">Ver detalles</button>
+                <div class="service-details" id="blockchain-details">
+                    <h3>Tecnologías y Servicios</h3>
+                    <ul>
+                        <li>Desarrollo de Smart Contracts con Solidity en Redes de Prueba y Mainnet</li>
+                        <li>Plataformas Ethereum, Polygon y Binance Smart Chain</li>
+                        <li>Consultoría en proyectos DeFi y NFT</li>
+                        <li>Formacion en criptomonedas y trading</li>
+                        <li>Diseño de arquitectura de DApps</li>
+                        <li>Elaboración de White Pappers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-graduation-cap icon icon-purple"></i>
+                    <h2 class="card-title">Educación y Mentoría</h2>
+                </div>
+                <p>Tutorías en Programación, diseño y elaboración de proyectos educativos para la formación en desarrollo de software e innovación tecnológica.</p>
+                <p class="price">Desde COP $50.000/hora</p>
+                <button class="details-button" onclick="toggleDetails('education')">Ver detalles</button>
+                <div class="service-details" id="education-details">
+                    <h3>Tecnologías y Servicios</h3>
+                    <ul>
+                        <li>Tutorías personalizadas en Scratch y Python</li>
+                        <li>Programación para niños y jóvenes</li>
+                        <li>Robótica educativa</li>
+                        <li>Mentoría en proyectos tecnológicos</li>
+                        <li>Talleres de innovación</li>
+                        <li>Formación en pensamiento computacional</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="technologies-section">
+            <h2 class="technologies-title">Tecnologías</h2>
+            <div class="technologies-grid">
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Frontend</h3>
+                    <div class="tech-category-grid">
+                        <div class="tech-item">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="HTML5">
+                            <span>HTML5</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS3">
+                            <span>CSS3</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript">
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://cdn.worldvectorlogo.com/logos/bootstrap-5-1.svg" alt="Bootstrap">
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/wordpress/wordpress-plain.svg" alt="WordPress">
+                            <span>WordPress</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Backend & APIs</h3>
+                    <div class="tech-category-grid">
+                        <div class="tech-item">
+                            <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js">
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python">
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="Java">
+                            <span>Java</span>
+                        </div>
+                        <div class="tech-item fastapi-logo">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/fastapi/fastapi-original.svg" alt="FastAPI">
+                            <span>FastAPI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Bases de Datos</h3>
+                    <div class="tech-category-grid">
+                        <div class="tech-item mysql-logo">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" alt="MySQL">
+                            <span>MySQL</span>
+                        </div>
+                        <div class="tech-item oracle-logo">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg" alt="Oracle SQL">
+                            <span>Oracle SQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg" alt="SQLite">
+                            <span>SQLite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Cloud & DevOps</h3>
+                    <div class="tech-category-grid">
+                        <div class="tech-item">
+                            <img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS">
+                            <span>AWS</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://cdn.worldvectorlogo.com/logos/git-icon.svg" alt="Git">
+                            <span>Git</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" alt="GitHub">
+                            <span>GitHub</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="Docker">
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Automatización & IA</h3>
+                    <div class="tech-category-grid">
+                        <div class="tech-item make-logo">
+                            <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/make-color.png" alt="Make (Integromat)">
+                            <span>Make</span>
+                        </div>
+                        <div class="tech-item n8n-logo">
+                            <img src="https://api.getkoala.com/web/companies/n8n.io/logo" alt="n8n">
+                            <span>n8n</span>
+                        </div>
+                        <div class="tech-item chatgpt-logo">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT">
+                            <span>ChatGPT</span>
+                        </div>
+                        <div class="tech-item cursor-logo">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMAoqhlxXf-36CbEskbnnPQ6S6Ra92Mx4Rjg&s" alt="Cursor">
+                            <span>Cursor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Blockchain & Educación</h3>
+                    <div class="tech-category-grid">
+                        <div class="tech-item">
+                            <img src="https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg" alt="Ethereum">
+                            <span>Ethereum</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Polygon_Icon.svg" alt="Polygon">
+                            <span>Polygon</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://altcoinsbox.com/wp-content/uploads/2023/01/bnb-chain-binance-smart-chain-logo-300x300.webp" alt="Binance Smart Chain">
+                            <span>BSC</span>
+                        </div>
+                        <div class="tech-item">
+                            <img src="https://cdn.worldvectorlogo.com/logos/scratch-cat.svg" alt="Scratch">
+                            <span>Scratch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleContact() {
+            const contactInfo = document.getElementById('contactInfo');
+            const button = document.querySelector('.contact-button');
+            
+            if (contactInfo.classList.contains('visible')) {
+                contactInfo.classList.remove('visible');
+                button.textContent = 'Mostrar contacto';
+            } else {
+                contactInfo.classList.add('visible');
+                button.textContent = 'Ocultar contacto';
+            }
+        }
+
+        function toggleDetails(serviceId) {
+            const details = document.getElementById(`${serviceId}-details`);
+            const button = details.previousElementSibling;
+            
+            if (details.classList.contains('visible')) {
+                details.classList.remove('visible');
+                button.textContent = 'Ver detalles';
+            } else {
+                details.classList.add('visible');
+                button.textContent = 'Ocultar detalles';
+            }
+        }
+    </script>
+</body>
+</html> 
